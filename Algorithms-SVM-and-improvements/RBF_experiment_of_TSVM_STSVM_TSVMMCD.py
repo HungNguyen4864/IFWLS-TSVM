@@ -908,10 +908,11 @@ end_time = time.time()
 print('total run time of TSVM_MCD: %.2f ' %((end_time - start_time)))
 print("(k, l): (%.1f, %.1f)" %((clf_tsvm_mcd.k, clf_tsvm_mcd.l)))
 
-from SVM_class import SVM
+# from SVM_class import SVM
+from sklearn.svm import SVC
 ### SVM:
 start_time = time.time()
-clf_svm = SVM(kernel = 'rbf', c = 1)
+clf_svm = SVC(kernel = 'rbf', c = 1)
 clf_svm.fit(AB_train_mms, y_train)
 print('Test accuracy of SVM: %.1f' % clf_svm.score(AB_test_mms, y_test))
 ###Cross validation score of SVM
