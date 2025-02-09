@@ -3,7 +3,7 @@ import numpy as np
 from LGBTSVM import LGBTSVM
 from gen_ball import gen_balls
 
-directory = './Data'
+directory = r"D:/LGBTSVM_MCD/GBTSVM-main/LS-GBTSVM/Data/"
 file_list = os.listdir(directory)
 if __name__ == '__main__':
     for file_name in file_list:
@@ -30,7 +30,7 @@ if __name__ == '__main__':
             c2=0.00001
         
             A_train = gen_balls(A_train, pur=pur, delbals=num)
-        
+
             Radius=[]
             for i in A_train:
                 Radius.append(i[1])
@@ -48,4 +48,5 @@ if __name__ == '__main__':
             A_train=np.hstack((Z_train,Lab))
 
             Test_accuracy, Test_time = LGBTSVM(A_train, A_test, c1,c1, c2,c2)
+            print(A_train)
             print(Test_accuracy)

@@ -3,7 +3,7 @@ import numpy as np
 from GBTSVM import GBTSVM
 from gen_ball import gen_balls
 
-directory = r"D:/IFWLS-TSVM/GBTSVM-main/GBTSVM/Data/"
+directory = r"D:/LGBTSVM_MCD/GBTSVM-main/GBTSVM/Data/"
 file_list = os.listdir(directory)
 
 if __name__ == '__main__':
