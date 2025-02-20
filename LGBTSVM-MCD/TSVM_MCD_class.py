@@ -60,27 +60,27 @@ class TSVM_MCD(BaseEstimator):
         # number of clusters
         last_A = L_A[-10:, 2]
         last_B = L_B[-10:, 2]
-        last_rev = last_A[::-1]
-        idxs = np.arange(1, len(last_A) + 1)
-        plt.plot(idxs, last_rev)
+        # last_rev = last_A[::-1]
+        # idxs = np.arange(1, len(last_A) + 1)
+        # plt.plot(idxs, last_rev)
         acceleration_A = np.diff(last_A, 2)  # 2nd derivative of the distances
         acceleration_rev_A = acceleration_A[::-1]
         acceleration_B = np.diff(last_B, 2)
         acceleration_rev_B = acceleration_B[::-1]
-        plt.plot(idxs[:-2] + 1, acceleration_rev_A)
-        plt.show()
+        # plt.plot(idxs[:-2] + 1, acceleration_rev_A)
+        # plt.show()
         k = acceleration_rev_A.argmax() + 1  # if idx 0 is the max of this we want 1 clusters
         l = acceleration_rev_B.argmax() + 1
-        print ("clusters_A:", self.k)
-        print("Clusters_B:", self.l)
+        print ("clusters_A:", k)
+        print("Clusters_B:", l)
         # Retrieve the clusters_A, clusters_B
         clusters_A = fcluster(L_A, k, criterion='maxclust')
         clusters_B = fcluster(L_B, l, criterion='maxclust')
-        print(clusters_A, clusters_B)
+        # print(clusters_A, clusters_B)
         # Visualizing clusters_A
-        plt.figure(figsize=(10, 8))
-        plt.scatter(A[:,0], A[:,1], c=clusters_A, cmap='prism')  # plot points with cluster dependent colors
-        plt.show()
+        # plt.figure(figsize=(10, 8))
+        # plt.scatter(A[:,0], A[:,1], c=clusters_A, cmap='prism')  # plot points with cluster dependent colors
+        # plt.show()
         self.labels_A = np.unique(clusters_A)
         Z_A = []
         if k != 1:

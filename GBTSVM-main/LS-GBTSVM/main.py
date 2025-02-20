@@ -30,7 +30,7 @@ if __name__ == '__main__':
             c2=0.00001
         
             A_train = gen_balls(A_train, pur=pur, delbals=num)
-
+            
             Radius=[]
             for i in A_train:
                 Radius.append(i[1])
@@ -46,7 +46,5 @@ if __name__ == '__main__':
             Z_train=np.hstack((Center,Radius.reshape(Radius.shape[0], 1)))
             Lab=Label.reshape(Label.shape[0], 1)
             A_train=np.hstack((Z_train,Lab))
-
             Test_accuracy, Test_time = LGBTSVM(A_train, A_test, c1,c1, c2,c2)
-            print(A_train)
             print(Test_accuracy)

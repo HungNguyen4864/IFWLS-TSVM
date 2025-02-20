@@ -47,7 +47,7 @@ if __name__ == '__main__':
             Z_train=np.hstack((Center,Radius.reshape(Radius.shape[0], 1)))
             Lab=Label.reshape(Label.shape[0], 1)
             A_train=np.hstack((Z_train,Lab))
-
+            print(A_train.shape, A_test.shape)
             Test_accuracy, Test_time = GBTSVM(A_train, A_test, c1, c2)
             print(Test_accuracy)
             print(Label)
