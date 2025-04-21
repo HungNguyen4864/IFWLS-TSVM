@@ -92,5 +92,5 @@ def GBTSVM(DataTrain, TestX, d1, d2):
     acc = ((TestX.shape[0] - err) / TestX.shape[0]) * 100
     end = time.time()
     Time=end - start
-    return acc, Time
+    return acc, Time, Predict_Y
 

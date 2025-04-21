@@ -2,6 +2,7 @@ import os
 import numpy as np
 from GBTSVM import GBTSVM
 from gen_ball import gen_balls
+from classGBTSVM import OvO_GBTSVM
 
 directory = r"D:/LGBTSVM_MCD/GBTSVM-main/GBTSVM/Data/"
 file_list = os.listdir(directory)
@@ -10,8 +11,6 @@ if __name__ == '__main__':
     for file_name in file_list:
         if file_name.endswith(".csv"):
             file_path = os.path.join(directory, file_name)
-       
-            print(file_name)
             file_data = np.loadtxt(file_path, delimiter=',')
         
             m, n = file_data.shape
@@ -47,7 +46,12 @@ if __name__ == '__main__':
             Z_train=np.hstack((Center,Radius.reshape(Radius.shape[0], 1)))
             Lab=Label.reshape(Label.shape[0], 1)
             A_train=np.hstack((Z_train,Lab))
-            print(A_train.shape, A_test.shape)
-            Test_accuracy, Test_time = GBTSVM(A_train, A_test, c1, c2)
+            Test_accuracy, Test_time, y_pred = GBTSVM(A_train, A_test, c1, c2)
             print(Test_accuracy)
-            print(Label)
+            print(y_pred)
+            # model = OvO_GBTSVM(c1, c2)
+            # model.fit(A_train)
+            # y_pred = model.predict(A_test)
+            # score = model.score(A_test)
+            # print(y_pred)
+            # print(score)

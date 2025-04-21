@@ -44,14 +44,14 @@ def LGBTSVM(Data,TestX,d1, d2, d3, d4):
     alpha2= solvers.qp(matrix(Q2,tc='d'),matrix(f2,tc='d'),matrix(cd,tc='d'),matrix(vcd,tc='d'))
     x2 = np.array(alpha2['x'])
 
-    m = TestX.shape[0]
-    test_data = TestX[:, :-1]
-
     b1=-(1 / d3) *np.dot(np.hstack((np.ones(p).T,np.ones(q).T)),x1)
     b2 = (1 / d4) * np.dot(np.hstack((np.ones(p).T,np.ones(q).T)),x2)
 
     w1 = -(1 / d3) * np.dot(np.hstack((A.T,B.T)),x1)
     w2 = (1 / d4) * np.dot(np.hstack((B.T,A.T)),x2)
+
+    m = TestX.shape[0]
+    test_data = TestX[:, :-1]
 
     y1 = np.dot(test_data, w1) + b1 * np.ones(m)
     y2 = np.dot(test_data, w2) + b2 * np.ones(m)

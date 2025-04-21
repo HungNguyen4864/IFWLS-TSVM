@@ -26,8 +26,8 @@ if __name__ == '__main__':
         
             pur = 1 - (0.015 * 5)
             num = 4
-            c1=0.00001
-            c2=0.00001
+            c1=0.1
+            c2=0.1
         
             A_train = gen_balls(A_train, pur=pur, delbals=num)
             

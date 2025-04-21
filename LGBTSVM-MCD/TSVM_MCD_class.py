@@ -71,7 +71,7 @@ class TSVM_MCD(BaseEstimator):
         # plt.show()
         k = acceleration_rev_A.argmax() + 1  # if idx 0 is the max of this we want 1 clusters
         l = acceleration_rev_B.argmax() + 1
-        print ("clusters_A:", k)
+        print ("clusters_A:", k) 
         print("Clusters_B:", l)
         # Retrieve the clusters_A, clusters_B
         clusters_A = fcluster(L_A, k, criterion='maxclust')
