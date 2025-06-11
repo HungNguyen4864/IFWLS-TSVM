@@ -36,7 +36,7 @@ def GBTSVM(DataTrain, TestX, d1, d2):
     kerH1 = (kerH1 + kerH1.T) / 2
     m1=kerH1.shape[0]
     e3= np.ones(m1)
-    R11=-(e3+R2)
+    R11=-(e3+R2)    
     solvers.options['show_progress'] = False
     vlb = np.zeros((m1,1))
     vub = d1*(np.ones((m1,1)))

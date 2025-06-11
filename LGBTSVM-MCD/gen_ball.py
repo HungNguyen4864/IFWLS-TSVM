@@ -132,27 +132,6 @@ class GBList:
         for i in set(label_cluster):
             granular_balls_division.append(GranularBall(self.data[label_cluster == i, :]))
         return granular_balls_division
-def generate_ball_data_multi(data, pur, delbals):
-    num, dim = data[:, :-1].shape
-    index = np.array(range(num)).reshape(num, 1)  
-    data = np.hstack((data, index))
-
-    gb = GBList(data)
-    gb.init_granular_balls(purity=pur)
-    gb.del_ball(num_data=delbals)
-    
-    centers = gb.get_center().tolist()
-    rs = gb.get_r().tolist()
-    
-    balldata = []
-    for i in range(len(gb.granular_balls)):
-        ball_info = []
-        ball_info.append(centers[i])        # center của bóng
-        ball_info.append(rs[i])             # bán kính của bóng
-        ball_info.append(gb.granular_balls[i].label)  # nhãn phổ biến nhất trong bóng (hỗ trợ nhiều nhãn bất kỳ)
-        balldata.append(ball_info)
-
-    return balldata
 def generate_ball_data(data,pur,delbals):
     num, dim = data[:, :-1].shape
     index = np.array(range(num)).reshape(num, 1)  # column of index
@@ -182,8 +161,7 @@ def gen_balls(data,pur,delbals):
     # df=pd.read_csv(url,header=None)
     # data=df.values
     # print(data.shape)
-    balls=generate_ball_data_multi(data,pur=pur,delbals=delbals)
-    # print(balls)
+    balls=generate_ball_data(data,pur=pur,delbals=delbals)
     R_balls=[]
     for i in balls:
         t_ball=[]

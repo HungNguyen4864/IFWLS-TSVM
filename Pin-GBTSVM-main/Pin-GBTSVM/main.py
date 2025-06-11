@@ -3,7 +3,7 @@ import numpy as np
 from Pin_GBTSVM import Pin_GBTSVM
 from gen_ball import gen_balls
 
-directory = './Data'
+directory = 'D:/LGBTSVM_MCD/Pin-GBTSVM-main/Pin-GBTSVM/Data'
 file_list = os.listdir(directory)
 if __name__ == '__main__':
     for file_name in file_list:
@@ -26,8 +26,8 @@ if __name__ == '__main__':
         
             pur = 1 - (0.015 * 5)                      
             num = 4
-            c1=0.00001
-            c2=0.00001
+            c1=0.1
+            c2=0.1
             tau=1
                      
             A_train = gen_balls(A_train, pur=pur, delbals=num)

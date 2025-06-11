@@ -3,7 +3,7 @@ import numpy as np
 from Pin_LGBTSVM import Pin_LGBTSVM
 from gen_ball import gen_balls
 
-directory = './Data'
+directory = 'D:/LGBTSVM_MCD/Pin-GBTSVM-main/Pin-GBTSVM/Data'
 file_list = os.listdir(directory)
 if __name__ == '__main__':
     for file_name in file_list:
